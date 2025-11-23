@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#00ff88" />
+  <title>The CosmiCollie | Page Not Found</title>
+  <link rel="icon" href="tsw.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-1:#1a1a2e;
+      --bg-2:#16213e;
+      --bg-3:#0f0f23;
+      --accent:#00ff88;
+      --muted:#b8c5d1;
+      --glass: rgba(26,26,46,0.88);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--muted);
+      background: radial-gradient(ellipse at center,var(--bg-1) 0%,var(--bg-2) 50%,var(--bg-3) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    /* Broken glass container to feel 'different' but consistent */
+    .shell{
+      width:100%;
+      max-width:880px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border-radius:14px;
+      border:1px solid rgba(0,255,136,0.06);
+      padding:44px;
+      text-align:center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(0,255,136,0.03) inset;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(6px);
+    }
+
+    /* subtle static layer */
+    .shell::after{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(transparent 70%, rgba(255,255,255,0.01) 70%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 3px);
+      opacity:0.04;
+      pointer-events:none;
+    }
+
+    /* Big glitchy headline */
+    h1{
+      font-family:'Orbitron',sans-serif;
+      font-weight:900;
+      font-size:clamp(2rem,6vw,4.2rem);
+      margin:0 0 18px;
+      color:var(--accent);
+      letter-spacing:1px;
+      position:relative;
+      display:inline-block;
+      line-height:1;
+      transform:translateZ(0);
+    }
+
+    /* two coloured layers to create glitch offset */
+    h1 .base{position:relative;display:block}
+    h1 .g1, h1 .g2{
+      position:absolute; left:0; top:0; right:0; bottom:0;
+      pointer-events:none;
+      mix-blend-mode:screen;
+      opacity:.9;
+      transform-origin:center;
+    }
+    h1 .g1{
+      color: rgba(255,0,102,0.85);
+      clip-path: inset(0 0 50% 0);
+      transform:translate(-4px, -2px) skewX(-2deg);
+      filter:blur(.4px);
+      animation:glitch-1 2.6s infinite steps(2,end);
+    }
+    h1 .g2{
+      color: rgba(0,255,170,0.95);
+      clip-path: inset(50% 0 0 0);
+      transform:translate(4px, 2px) skewX(2deg);
+      filter:blur(.6px);
+      animation:glitch-2 3.2s infinite steps(2,end);
+    }
+
+    /* small broken underline */
+    .underline{
+      display:block;
+      height:6px;
+      width:160px;
+      margin:14px auto 16px;
+      background:linear-gradient(90deg, transparent 0%, var(--accent) 40%, transparent 100%);
+      opacity:.9;
+      transform:skewX(-8deg);
+      box-shadow:0 6px 18px rgba(0,255,136,0.06);
+    }
+
+    p.lead{
+      margin:0 0 20px;
+      font-size:1.05rem;
+      color:var(--muted);
+    }
+
+    /* glitchy broken text effect on description */
+    p.lead .broken{
+      display:inline-block;
+      position:relative;
+      color:var(--muted);
+    }
+    p.lead .broken::before,
+    p.lead .broken::after{
+      content:attr(data-text);
+      position:absolute;
+      left:0; top:0;
+      width:100%; height:100%;
+      pointer-events:none;
+      opacity:.6;
+      mix-blend-mode:screen;
+    }
+    p.lead .broken::before{
+      color:rgba(255,0,102,0.6);
+      transform:translate(-2px,-1px);
+      clip-path: polygon(0 0,100% 0,100% 70%,0 60%);
+      animation:glitch-3 1.8s infinite steps(2,end);
+    }
+    p.lead .broken::after{
+      color:rgba(0,255,170,0.6);
+      transform:translate(2px,1px);
+      clip-path: polygon(0 40%,100% 50%,100% 100%,0 100%);
+      animation:glitch-4 2.4s infinite steps(2,end);
+    }
+
+    /* return link styled like other pages' button but prominent */
+    .home-link{
+      display:inline-block;
+      margin-top:18px;
+      background:linear-gradient(135deg,var(--accent),#00cc6a);
+      color:#071124;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:0 12px 30px rgba(0,255,136,0.06);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .home-link:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(0,255,136,0.1); }
+
+    /* small footer note to match other pages */
+    .mini-footer{
+      margin-top:22px;
+      font-size:0.92rem;
+      color:var(--muted);
+      opacity:.85;
+    }
+
+    /* keyframe glitches */
+    @keyframes glitch-1{
+      0%{ transform:translate(-4px,-2px) skewX(-2deg) }
+      8%{ transform:translate(-12px,2px) skewX(-6deg) }
+      10%{ transform:translate(-4px,-2px) skewX(-2deg) }
+      50%{ transform:translate(-3px,-1px) skewX(-1deg) }
+      100%{ transform:translate(-4px,-2px) skewX(-2deg) }
+    }
+    @keyframes glitch-2{
+      0%{ transform:translate(4px,2px) skewX(2deg) }
+      7%{ transform:translate(10px,-2px) skewX(6deg) }
+      12%{ transform:translate(4px,2px) skewX(2deg) }
+      60%{ transform:translate(3px,1px) skewX(1deg) }
+      100%{ transform:translate(4px,2px) skewX(2deg) }
+    }
+    @keyframes glitch-3{
+      0%{ transform:translate(0,0) }
+      9%{ transform:translate(-6px,-2px) }
+      12%{ transform:translate(0,0) }
+      70%{ transform:translate(-1px,0) }
+      100%{ transform:translate(0,0) }
+    }
+    @keyframes glitch-4{
+      0%{ transform:translate(0,0) }
+      6%{ transform:translate(6px,2px) }
+      14%{ transform:translate(0,0) }
+      66%{ transform:translate(1px,0) }
+      100%{ transform:translate(0,0) }
+    }
+
+    /* reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+    }
+
+    /* responsive */
+    @media (max-width:520px){
+      .shell{padding:28px}
+      h1{font-size:2.4rem}
+      .underline{width:120px}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell" role="main" aria-labelledby="title">
+    <h1 id="title" aria-hidden="false">
+      <span class="base">404, This page doesn't exist</span>
+      <span class="g1" aria-hidden="true">404, This page doesn't exist</span>
+      <span class="g2" aria-hidden="true">404, This page doesn't exist</span>
+    </h1>
+
+    <span class="underline" aria-hidden="true"></span>
+
+    <p class="lead">
+      <span class="broken" data-text="This page doesn't exist">This page doesn't exist</span>
+    </p>
+
+    <p style="margin:18px 0 0;">
+    <a class="home-link" href="index.html" aria-label="Return to home">Click here to return Home.</a>
+    </p>
+
+    <div class="mini-footer" aria-hidden="true">Made with 💚 by CosmiCollie</div>
+  </main>
+</body>
+</html>
